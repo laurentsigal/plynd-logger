@@ -2,7 +2,7 @@
 var util = require('util');
 
 // Default levels
-var defaultLevels = ["debug", "info", "error"];
+var defaultLevels = ["debug", "info", "warn", "error"];
 var defaultOptions = {
     'level':'debug',
     'timestamp':true

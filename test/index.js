@@ -48,4 +48,34 @@ describe('logger', function() {
         logger.debug("Message");
         console.log("Not called");
     });
+
+    it('should log info', function(done) {
+        var logger = loggerModule.get("yoya");
+
+        interceptOnce(function(message) {
+            assert.equal(message, "[yoya] [debug] Message");
+            done();
+        });
+        logger.debug("Message");
+    });
+
+    it('should log warn', function(done) {
+        var logger = loggerModule.get("yoya");
+
+        interceptOnce(function(message) {
+            assert.equal(message, "[yoya] [warn] Message");
+            done();
+        });
+        logger.warn("Message");
+    });
+
+    it('should log error', function(done) {
+        var logger = loggerModule.get("yoya");
+
+        interceptOnce(function(message) {
+            assert.equal(message, "[yoya] [error] Message");
+            done();
+        });
+        logger.error("Message");
+    });
 });

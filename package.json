@@ -1,6 +1,6 @@
 {
   "name": "plynd-logger",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Logger used for Plynd",
   "main": "index.js",
   "scripts": {
