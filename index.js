@@ -45,6 +45,10 @@ exports.get = function(domain, requestedOptions) {
                 logF("info", arguments);
             },
 
+            warn:function() {
+                logF("warn", arguments);
+            },
+
             error:function() {
                 logF("error", arguments);
             },
