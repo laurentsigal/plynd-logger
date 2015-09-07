@@ -1,0 +1,37 @@
+{
+  "name": "plynd-logger",
+  "version": "1.0.0",
+  "description": "Logger used for Plynd",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laurentsigal/plynd-logger.git"
+  },
+  "keywords": [
+    "log to console",
+    "timestamp",
+    "logging",
+    "basic logger",
+    "logger",
+    "log"
+  ],
+  "author": "Laurent Sigal <laurent@plynd.com> (https://github.com/laurentsigal)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/laurentsigal/plynd-logger/blob/master/LICENSE.md"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/laurentsigal/plynd-logger/issues"
+  },
+  "homepage": "https://github.com/laurentsigal/plynd-logger",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.3.1"
+  }
+}
