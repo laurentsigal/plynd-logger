@@ -2,13 +2,20 @@
 var util = require('util');
 
 // Default levels
-var defaultLevels = ["debug", "info", "warn", "error"];
+var logLevels = ["debug", "info", "warn", "error"];
 var defaultOptions = {
-    'level':'debug',
+    'level':(process.env && process.env.NODE_ENV == "production") ? "info" : "debug",
     'timestamp':true
 };
 
 var loggers = {};
+
+// This is not backward applicable to existing loggers
+exports.setLevel = function(level) {
+    if (logLevels.indexOf(level) != -1) {
+        defaultOptions.level = level;
+    }
+};
 
 exports.get = function(domain, requestedOptions) {
     (domain) || (domain = "default");
@@ -21,10 +28,10 @@ exports.get = function(domain, requestedOptions) {
         options = require('util')._extend(options, requestedOptions);
 
         // Set up the level mask
-        var requiredLevel = Math.max(0, defaultLevels.indexOf(options.level));
+        var requiredLevel = Math.max(0, logLevels.indexOf(options.level));
         var setLevels = {};
-        for (var i = 0; i < defaultLevels.length; i++) {
-            setLevels[defaultLevels[i]] = (i >= requiredLevel);
+        for (var i = 0; i < logLevels.length; i++) {
+            setLevels[logLevels[i]] = (i >= requiredLevel);
         }
 
         // Set up the date formatter

@@ -78,4 +78,16 @@ describe('logger', function() {
         });
         logger.error("Message");
     });
+
+    it('should log adapt to global log level if set', function(done) {
+        loggerModule.setLevel("info");
+        var logger = loggerModule.get("hello", {timestamp:false});
+        interceptOnce(function(message) {
+            assert.equal(message, "Not called");
+            done();
+        });
+        logger.debug("Message");
+        console.log("Not called");
+    });
+
 });
