@@ -43,6 +43,18 @@ exports.get = function(domain, requestedOptions) {
         var logF = function(type, args) {
             if (!setLevels[type]) return;
             args = Array.prototype.slice.call(args);
+
+            // Become circular-safe
+            args = args.map(function(arg) {
+                try {
+                    JSON.stringify(arg);
+                    return arg;
+                }
+                catch (e) {
+                    return ["circular"];
+                }
+            });
+
             var message = formatDate() + '[' + domain + '] [' + type + '] ' + util.format.apply(null, args);
             console.log(message);
         };

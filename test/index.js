@@ -90,4 +90,15 @@ describe('logger', function() {
         console.log("Not called");
     });
 
+    it('should not crash on circular object', function(done) {
+        var logger = loggerModule.get("yoya");
+        interceptOnce(function(message) {
+            assert.equal(message, "[yoya] [debug] [\"circular\"]");
+            done();
+        });
+        var circular = {};
+        circular.link = circular;
+        logger.debug("%j", circular);
+    });
+
 });
